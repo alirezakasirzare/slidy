@@ -1,7 +1,7 @@
 import { BoxIcon } from "lucide-react";
 import { Element, ElementOption } from "~/types";
 
-const justifyOption: ElementOption = {
+const justifyOption: ElementOption<"justify"> = {
   text: "Justify",
   name: "justify",
   value: [
@@ -20,7 +20,7 @@ const justifyOption: ElementOption = {
   ],
 };
 
-const alignOption: ElementOption = {
+const alignOption: ElementOption<"align"> = {
   text: "Align",
   name: "align",
   value: [
@@ -39,23 +39,17 @@ const alignOption: ElementOption = {
   ],
 };
 
-const gapOption: ElementOption = {
+const gapOption: ElementOption<"gap"> = {
   text: "Gap",
   name: "gap",
   value: "number",
 };
 
-const rowElementOptions: ElementOption[] = [
-  justifyOption,
-  alignOption,
-  gapOption,
-];
-
-export const rowElementConfig: Element = {
+export const rowElementConfig: Element<"row", "justify" | "align" | "gap"> = {
   text: "Row",
   name: "row",
   icon: <BoxIcon />,
-  options: rowElementOptions,
+  options: [justifyOption, alignOption, gapOption],
 };
 
 export const RowElement = () => {

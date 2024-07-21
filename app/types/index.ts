@@ -1,13 +1,13 @@
-export type Element = {
+export type Element<T, J> = {
   text: string;
-  name: string;
+  name: T;
   icon: React.ReactElement;
-  options: ElementOption[];
+  options: ElementOption<J>[];
 };
 
-export type ElementOption = {
+export type ElementOption<T> = {
   text: string;
-  name: string;
+  name: T;
   value: ElementOptionValue;
 };
 
