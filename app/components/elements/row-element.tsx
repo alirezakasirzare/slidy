@@ -1,11 +1,31 @@
 import { BoxIcon } from "lucide-react";
-import { Element } from "~/types";
+import {
+  Element,
+  ElementOption,
+  ElementOptionNumber,
+  ElementOptionSelect,
+} from "~/types";
 
-export const rowElementConfig: Element<
+interface JustifyOption
+  extends ElementOption<
+    "justify",
+    ElementOptionSelect<"start" | "center" | "end">
+  > {}
+
+interface AlignOption
+  extends ElementOption<
+    "align",
+    ElementOptionSelect<"start" | "center" | "end">
+  > {}
+
+interface GapOption extends ElementOption<"gap", ElementOptionNumber> {}
+
+export type RowElementConfig = Element<
   "row",
-  "justify" | "align" | "gap",
-  "start" | "center" | "end"
-> = {
+  JustifyOption | AlignOption | GapOption
+>;
+
+export const rowElementConfig: RowElementConfig = {
   text: "Row",
   name: "row",
   icon: <BoxIcon />,

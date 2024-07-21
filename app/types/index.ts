@@ -1,14 +1,15 @@
-export type Element<T, J, V> = {
+export type Element<TName, TOption> = {
   text: string;
-  name: T;
+  name: TName;
   icon: React.ReactElement;
-  options: ElementOption<J, V>[];
+  options: TOption[];
 };
 
-export type ElementOption<T, J> = {
+export type ElementOption<TName, TValue> = {
   text: string;
-  name: T;
-  value: ElementOptionValue<J>;
+  name: TName;
+  value: TValue;
 };
 
-export type ElementOptionValue<T> = "number" | { text: string; value: T }[];
+export type ElementOptionSelect<TValue> = { text: string; value: TValue }[];
+export type ElementOptionNumber = "number";
