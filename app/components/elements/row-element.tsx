@@ -1,4 +1,5 @@
 import { BoxIcon } from "lucide-react";
+import { cn } from "~/lib/utils";
 import {
   Element,
   ElementOption,
@@ -24,6 +25,15 @@ export type RowElementConfig = Element<
   "row",
   JustifyOption | AlignOption | GapOption
 >;
+
+export type RowElementResult = {
+  type: "row";
+  options: {
+    justify: "start" | "center" | "end";
+    align: "start" | "center" | "end";
+    gap: number;
+  };
+};
 
 export const rowElementConfig: RowElementConfig = {
   text: "Row",
@@ -74,6 +84,28 @@ export const rowElementConfig: RowElementConfig = {
   ],
 };
 
-export const RowElement = () => {
-  return <div>row element</div>;
+type Props = {
+  result: RowElementResult;
+};
+export const RowElement = ({ result }: Props) => {
+  return (
+    <div
+      className={cn(
+        "border-2 border-blue-500 flex",
+        // justify
+        result.options.justify === "start" && "justify-start",
+        result.options.justify === "center" && "justify-center",
+        result.options.justify === "end" && "justify-end",
+
+        // align
+        result.options.align === "start" && "items-start",
+        result.options.align === "center" && "items-center",
+        result.options.align === "end" && "items-end"
+      )}
+      style={{ gap: result.options.gap }}
+    >
+      <div>row element</div>
+      <div>row element</div>
+    </div>
+  );
 };
