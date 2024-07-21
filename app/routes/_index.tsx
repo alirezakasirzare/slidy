@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Sidebar } from "~/components/common/sidebar";
+import { Sidebar } from "~/components/common/sidebar/sidebar";
 
 export const meta: MetaFunction = () => {
   return [
