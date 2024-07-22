@@ -8,7 +8,7 @@ export type SidebarItemType = {
 export const SidebarItem = ({ icon, text }: SidebarItemType) => {
   const newIcon = cloneElement(icon, { className: "size-4" });
   return (
-    <div className="flex items-center justify-between bg-black/10 py-2 px-3 rounded-lg">
+    <div className="flex items-center justify-between bg-black/5 py-2 px-3 rounded-lg">
       {text} {newIcon}
     </div>
   );

@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { rowElementConfig } from "../../elements/row-element";
 import { SidebarItem, SidebarItemType } from "./sidebar-item";
+import { Tab, TabsList } from "./tabs-list";
+import { SidebarAddItem } from "./sidebar-add-item";
 
 const items: SidebarItemType[] = [
   {
@@ -8,11 +11,19 @@ const items: SidebarItemType[] = [
   },
 ];
 export const Sidebar = () => {
+  const [activeTab, setActiveTab] = useState<Tab>("tree");
   return (
     <aside className="w-[300px] bg-accent shrink-0 p-5">
-      {items.map((item, i) => (
-        <SidebarItem key={i} {...item} />
-      ))}
+      <TabsList activeTab={activeTab} onChangeTab={setActiveTab} />
+      {activeTab === "tree" && (
+        <>
+          {items.map((item, i) => (
+            <SidebarItem key={i} {...item} />
+          ))}
+
+          <SidebarAddItem />
+        </>
+      )}
     </aside>
   );
 };
