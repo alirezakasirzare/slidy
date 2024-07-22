@@ -22,10 +22,10 @@ export default function Index() {
     },
   };
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen p-4 gap-x-4 bg-[#1e1e1e]">
       <Sidebar />
-      <main className="grow px-10 py-6">
-        <div className="border h-full rounded-xl p-4">
+      <main className="grow">
+        <div className="border h-full rounded-xl p-4 border-[#2c2c2c]">
           <RowElement result={result} />
         </div>
       </main>

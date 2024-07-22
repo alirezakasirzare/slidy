@@ -13,7 +13,7 @@ const items: SidebarItemType[] = [
 export const Sidebar = () => {
   const [activeTab, setActiveTab] = useState<Tab>("tree");
   return (
-    <aside className="w-[300px] bg-accent shrink-0 p-5">
+    <aside className="w-[300px] bg-[#2c2c2c] shrink-0 p-5 rounded-xl text-white/90">
       <TabsList activeTab={activeTab} onChangeTab={setActiveTab} />
       {activeTab === "tree" && (
         <>

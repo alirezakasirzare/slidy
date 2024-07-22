@@ -11,7 +11,7 @@ export const TabsList = ({ activeTab, onChangeTab }: Props) => {
   const tabs: Tab[] = ["tree", "setting"];
 
   return (
-    <ul className="flex gap-x-2 mb-3">
+    <ul className="flex gap-x-2 mb-3 border-b border-white/5">
       {tabs.map((tab) => (
         <TabItem
           key={tab}

@@ -12,7 +12,7 @@ export const TabItem = ({ text, onClick, isActive }: Props) => {
         onClick={onClick}
         className={cn(
           "capitalize border-b-2 pb-2 px-2 border-transparent",
-          isActive && "border-black/20"
+          isActive && "border-white/10"
         )}
       >
         {text}
