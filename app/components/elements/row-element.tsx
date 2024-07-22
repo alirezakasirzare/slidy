@@ -1,25 +1,14 @@
 import { BoxIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
-import {
-  Element,
-  ElementOption,
-  ElementOptionNumber,
-  ElementOptionSelect,
-} from "~/types";
+import { Element, ElementOptionNumber, ElementOptionSelect } from "~/types";
 
 interface JustifyOption
-  extends ElementOption<
-    "justify",
-    ElementOptionSelect<"start" | "center" | "end">
-  > {}
+  extends ElementOptionSelect<"justify", "start" | "center" | "end"> {}
 
 interface AlignOption
-  extends ElementOption<
-    "align",
-    ElementOptionSelect<"start" | "center" | "end">
-  > {}
+  extends ElementOptionSelect<"align", "start" | "center" | "end"> {}
 
-interface GapOption extends ElementOption<"gap", ElementOptionNumber> {}
+interface GapOption extends ElementOptionNumber<"gap"> {}
 
 export type RowElementConfig = Element<
   "row",
@@ -35,6 +24,15 @@ export type RowElementResult = {
   };
 };
 
+export const defaultRowElementResult: RowElementResult = {
+  type: "row",
+  options: {
+    justify: "center",
+    align: "start",
+    gap: 4,
+  },
+};
+
 export const rowElementConfig: RowElementConfig = {
   text: "Row",
   name: "row",
@@ -43,7 +41,8 @@ export const rowElementConfig: RowElementConfig = {
     {
       text: "Justify",
       name: "justify",
-      value: [
+      type: "select",
+      items: [
         {
           text: "Start",
           value: "start",
@@ -61,7 +60,8 @@ export const rowElementConfig: RowElementConfig = {
     {
       text: "Align",
       name: "align",
-      value: [
+      type: "select",
+      items: [
         {
           text: "Start",
           value: "start",
@@ -79,7 +79,7 @@ export const rowElementConfig: RowElementConfig = {
     {
       text: "Gap",
       name: "gap",
-      value: "number",
+      type: "number",
     },
   ],
 };

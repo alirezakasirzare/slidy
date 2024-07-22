@@ -5,11 +5,26 @@ export type Element<TName, TOption> = {
   options: TOption[];
 };
 
-export type ElementOption<TName, TValue> = {
+export type ElementOptionNumber<TName> = {
   text: string;
   name: TName;
-  value: TValue;
+  type: "number";
 };
 
-export type ElementOptionSelect<TValue> = { text: string; value: TValue }[];
-export type ElementOptionNumber = "number";
+export type ElementOptionText<TName> = {
+  text: string;
+  name: TName;
+  type: "text";
+};
+
+export type ElementOptionSelect<TName, TValue> = {
+  text: string;
+  name: TName;
+  type: "select";
+  items: { text: string; value: TValue }[];
+};
+
+export type ElementOption<TName, TValue> =
+  | ElementOptionNumber<TName>
+  | ElementOptionText<TName>
+  | ElementOptionSelect<TName, TValue>;

@@ -1,15 +1,9 @@
 import { useState } from "react";
-import { rowElementConfig } from "../../elements/row-element";
 import { SidebarItem, SidebarItemType } from "./sidebar-item";
 import { Tab, TabsList } from "./tabs-list";
 import { SidebarAddItem } from "./sidebar-add-item";
 
-const items: SidebarItemType[] = [
-  {
-    text: rowElementConfig.name,
-    icon: rowElementConfig.icon,
-  },
-];
+const items: SidebarItemType[] = [];
 export const Sidebar = () => {
   const [activeTab, setActiveTab] = useState<Tab>("tree");
   return (
