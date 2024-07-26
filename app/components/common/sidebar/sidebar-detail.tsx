@@ -48,13 +48,21 @@ export const SidebarDetail = () => {
             {option.type === "number" && (
               <NumberOption
                 option={option}
-                value={elementResult.options.gap}
+                value={elementResult.options[option.name]}
                 onChange={(newValue: number) => {
                   changeOption(activeElement, option.name, newValue);
                 }}
               />
             )}
-            {option.type === "select" && <SelectOption option={option} />}
+            {option.type === "select" && (
+              <SelectOption
+                option={option}
+                value={elementResult.options[option.name]}
+                onChange={(newValue: string) => {
+                  changeOption(activeElement, option.name, newValue);
+                }}
+              />
+            )}
           </Fragment>
         ))}
       </div>

@@ -22,10 +22,10 @@ export const Sidebar = () => {
               {slide.childrens.map((item, i) => (
                 <SidebarItem key={i} {...item} />
               ))}
+
+              <SidebarAddItem />
             </>
           )}
-
-          <SidebarAddItem />
         </>
       )}
     </aside>

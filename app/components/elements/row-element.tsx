@@ -6,7 +6,10 @@ import { cn } from "~/lib/utils";
 import { Element, ElementOptionNumber, ElementOptionSelect } from "~/types";
 
 interface JustifyOption
-  extends ElementOptionSelect<"justify", "start" | "center" | "end"> {}
+  extends ElementOptionSelect<
+    "justify",
+    "start" | "center" | "end" | "between"
+  > {}
 
 interface AlignOption
   extends ElementOptionSelect<"align", "start" | "center" | "end"> {}
@@ -22,7 +25,7 @@ export type RowElementResult = {
   id: string;
   type: "row";
   options: {
-    justify: "start" | "center" | "end";
+    justify: "start" | "center" | "end" | "between";
     align: "start" | "center" | "end";
     gap: number;
   };
@@ -62,6 +65,10 @@ export const rowElementConfig: RowElementConfig = {
         {
           text: "End",
           value: "end",
+        },
+        {
+          text: "Between",
+          value: "between",
         },
       ],
     },
@@ -110,6 +117,7 @@ export const RowElement = ({ result }: Props) => {
         result.options.justify === "start" && "justify-start",
         result.options.justify === "center" && "justify-center",
         result.options.justify === "end" && "justify-end",
+        result.options.justify === "between" && "justify-between",
 
         // align
         result.options.align === "start" && "items-start",
