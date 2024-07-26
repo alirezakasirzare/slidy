@@ -22,6 +22,8 @@ export type ElementOptionNumber<TName> = {
   text: string;
   name: TName;
   type: "number";
+  min?: number;
+  max?: number;
 };
 
 export type ElementOptionText<TName> = {

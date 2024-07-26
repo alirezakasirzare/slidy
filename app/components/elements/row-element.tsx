@@ -88,6 +88,7 @@ export const rowElementConfig: RowElementConfig = {
       text: "Gap",
       name: "gap",
       type: "number",
+      min: 0,
     },
   ],
 };

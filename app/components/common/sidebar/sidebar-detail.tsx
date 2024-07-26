@@ -1,13 +1,16 @@
 import { GoArrowLeft } from "react-icons/go";
+import { Fragment } from "react/jsx-runtime";
 
 import { useSlide } from "~/hooks/use-slide";
 import {
   getElementConfigByName,
   getElementResultByIdFromChildrens,
 } from "~/lib/utils";
+import { SelectOption } from "./options/select-option";
+import { NumberOption } from "./options/number-option";
 
 export const SidebarDetail = () => {
-  const { activeElement, slide, setActiveElement } = useSlide();
+  const { activeElement, slide, setActiveElement, changeOption } = useSlide();
 
   const elementResult = getElementResultByIdFromChildrens(
     slide.childrens,
@@ -39,6 +42,22 @@ export const SidebarDetail = () => {
       </div>
 
       {/* options */}
+      <div className="mt-4">
+        {elementConfig.options.map((option, i) => (
+          <Fragment key={i}>
+            {option.type === "number" && (
+              <NumberOption
+                option={option}
+                value={elementResult.options.gap}
+                onChange={(newValue: number) => {
+                  changeOption(activeElement, option.name, newValue);
+                }}
+              />
+            )}
+            {option.type === "select" && <SelectOption option={option} />}
+          </Fragment>
+        ))}
+      </div>
     </div>
   );
 };

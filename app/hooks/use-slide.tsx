@@ -19,5 +19,28 @@ export const useSlide = () => {
     setSlide((prev) => ({ ...prev, childrens: [...prev.childrens, newChild] }));
   };
 
-  return { slide, addChild, activeElement, setActiveElement };
+  // change option
+  const changeOption = (
+    path: string[],
+    name: string,
+    value: string | number
+  ) => {
+    setSlide((prev) => {
+      const newSlide = { ...prev };
+      newSlide.childrens = prev.childrens.map((child) => {
+        const newChild = { ...child };
+
+        if (newChild.id === path[0]) {
+          // @ts-ignore
+          newChild.options[name] = value;
+        }
+
+        return newChild;
+      });
+
+      return newSlide;
+    });
+  };
+
+  return { slide, addChild, activeElement, setActiveElement, changeOption };
 };
