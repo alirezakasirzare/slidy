@@ -4,7 +4,7 @@ import { Fragment } from "react/jsx-runtime";
 import { useSlide } from "~/hooks/use-slide";
 import {
   getElementConfigByName,
-  getElementResultByIdFromChildrens,
+  getElementResultByIdFromChildren,
 } from "~/lib/utils";
 import { SelectOption } from "./options/select-option";
 import { NumberOption } from "./options/number-option";
@@ -12,8 +12,8 @@ import { NumberOption } from "./options/number-option";
 export const SidebarDetail = () => {
   const { activeElement, slide, setActiveElement, changeOption } = useSlide();
 
-  const elementResult = getElementResultByIdFromChildrens(
-    slide.childrens,
+  const elementResult = getElementResultByIdFromChildren(
+    slide.children,
     activeElement[0]
   );
 

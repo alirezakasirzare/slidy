@@ -21,7 +21,7 @@ export const Sidebar = () => {
             <SidebarDetail />
           ) : (
             <>
-              {slide.childrens.map((item, i) => (
+              {slide.children.map((item, i) => (
                 <SidebarItem key={i} {...item} />
               ))}
 

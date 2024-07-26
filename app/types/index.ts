@@ -7,7 +7,7 @@ export type SlideName = "row";
 
 export type Slide = {
   name: string;
-  childrens: AppElementResult[];
+  children: AppElementResult[];
 };
 
 // elements

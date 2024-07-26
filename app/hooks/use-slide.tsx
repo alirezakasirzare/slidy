@@ -11,12 +11,12 @@ export const useSlide = () => {
 
   const [slide, setSlide] = useLocalStorage<Slide>("slide", {
     name: "test",
-    childrens: [],
+    children: [],
   });
 
   // add child
   const addChild = (newChild: AppElementResult) => {
-    setSlide((prev) => ({ ...prev, childrens: [...prev.childrens, newChild] }));
+    setSlide((prev) => ({ ...prev, children: [...prev.children, newChild] }));
   };
 
   // change option
@@ -27,7 +27,7 @@ export const useSlide = () => {
   ) => {
     setSlide((prev) => {
       const newSlide = { ...prev };
-      newSlide.childrens = prev.childrens.map((child) => {
+      newSlide.children = prev.children.map((child) => {
         const newChild = { ...child };
 
         if (newChild.id === path[0]) {

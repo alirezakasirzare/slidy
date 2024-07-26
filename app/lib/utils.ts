@@ -14,10 +14,10 @@ export const getElementConfigByName = (name: SlideName) => {
   }
 };
 
-// get element result by id from childrens
-export const getElementResultByIdFromChildrens = (
-  childrens: AppElementResult[],
+// get element result by id from children
+export const getElementResultByIdFromChildren = (
+  children: AppElementResult[],
   id: string
 ) => {
-  return childrens.find((children) => children.id === id);
+  return children.find((child) => child.id === id);
 };

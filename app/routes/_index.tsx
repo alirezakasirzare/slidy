@@ -17,7 +17,7 @@ export default function Index() {
       <Sidebar />
       <main className="grow">
         <div className="border h-full rounded-xl p-4 border-[#2c2c2c]">
-          {slide.childrens.map((item, i) => (
+          {slide.children.map((item, i) => (
             <RowElement result={item} key={i} />
           ))}
         </div>
