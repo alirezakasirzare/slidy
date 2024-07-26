@@ -1,4 +1,17 @@
-export type Element<TName, TOption> = {
+import { RowElementResult } from "~/components/elements/row-element";
+
+// slide
+export type AppElementResult = RowElementResult;
+
+export type SlideName = "row";
+
+export type Slide = {
+  name: string;
+  childrens: AppElementResult[];
+};
+
+// elements
+export type Element<TName extends SlideName, TOption> = {
   text: string;
   name: TName;
   icon: React.ReactElement;

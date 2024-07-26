@@ -1,15 +1,30 @@
 import { cloneElement } from "react";
+import { useSlide } from "~/hooks/use-slide";
+import { getElementConfigByName } from "~/lib/utils";
+import { AppElementResult } from "~/types";
 
-export type SidebarItemType = {
-  icon: React.ReactElement;
-  text: string;
-};
+interface SidebarItemType extends AppElementResult {}
 
-export const SidebarItem = ({ icon, text }: SidebarItemType) => {
-  const newIcon = cloneElement(icon, { className: "size-4" });
+export const SidebarItem = ({ type, id }: SidebarItemType) => {
+  const { setActiveElement } = useSlide();
+  const element = getElementConfigByName(type);
+
+  if (!element) {
+    return null;
+  }
+
+  const onClick = () => {
+    setActiveElement([id]);
+  };
+
+  const newIcon = cloneElement(element.icon, { className: "size-4" });
+
   return (
-    <div className="flex items-center justify-between bg-white/5 py-2 px-3 rounded-lg">
-      {text} {newIcon}
-    </div>
+    <button
+      className="flex items-center justify-between bg-white/5 py-2 px-3 rounded-lg mt-1 first-of-type:mt-0 w-full"
+      onClick={onClick}
+    >
+      {element.text} {newIcon}
+    </button>
   );
 };

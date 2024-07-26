@@ -1,4 +1,7 @@
 import { BoxIcon } from "lucide-react";
+import { v4 as uuid } from "uuid";
+import { useSlide } from "~/hooks/use-slide";
+
 import { cn } from "~/lib/utils";
 import { Element, ElementOptionNumber, ElementOptionSelect } from "~/types";
 
@@ -16,6 +19,7 @@ export type RowElementConfig = Element<
 >;
 
 export type RowElementResult = {
+  id: string;
   type: "row";
   options: {
     justify: "start" | "center" | "end";
@@ -24,13 +28,17 @@ export type RowElementResult = {
   };
 };
 
-export const defaultRowElementResult: RowElementResult = {
-  type: "row",
-  options: {
-    justify: "center",
-    align: "start",
-    gap: 4,
-  },
+export const getDefaultRowElementResult = (): RowElementResult => {
+  const id = uuid();
+  return {
+    id,
+    type: "row",
+    options: {
+      justify: "center",
+      align: "start",
+      gap: 4,
+    },
+  };
 };
 
 export const rowElementConfig: RowElementConfig = {
@@ -88,10 +96,15 @@ type Props = {
   result: RowElementResult;
 };
 export const RowElement = ({ result }: Props) => {
+  const { activeElement } = useSlide();
+  const isActive = activeElement.includes(result.id);
   return (
     <div
       className={cn(
-        "border-2 border-blue-500 flex",
+        "flex text-white/90",
+        // active element style
+        isActive && "[box-shadow:0px_0px_0px_2px_rgba(59,130,246,1)]",
+
         // justify
         result.options.justify === "start" && "justify-start",
         result.options.justify === "center" && "justify-center",
